@@ -62,6 +62,4 @@ urlpatterns = [
     url(r"^download_project_files", FileDownloader.as_view(), name="download_project_files"),
     url(r"^temp_file/(?P<file_id>[^\/]+)", TempFileView.as_view(), name="temp_file"),
     url(r"^temp_file$", TempFileView.as_view(), name="temp_file"),
-    path("reports/", include("arches_templating.urls")),
-    url(r"^", include("arches.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
