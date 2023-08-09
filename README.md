@@ -25,7 +25,7 @@ ARCHES_APPLICATIONS = (
 ```
 yarn install
 ```
-5. update project settings.py with anything from the arches application settings.py
+7. update project settings.py with anything from the arches application settings.py
 ```
 ELASTICSEARCH_HOSTS = [{"scheme": "http", "host": "localhost", "port": ELASTICSEARCH_HTTP_PORT}]
 TEMPLATES[0]["OPTIONS"]["context_processors"].append("arches_for_science_package.utils.context_processors.project_settings")
@@ -141,7 +141,7 @@ FORMATS = [
 ]
 
 ```
-6. update urls to include arches application
+8. update urls to include arches application
 ```
 urlpatterns = [
     url(r'^', include('arches.urls')),
@@ -149,7 +149,7 @@ urlpatterns = [
     path("reports/", include("arches_templating.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
-7. update INSTALLED_APPS with anything that was in arches application(s) and any app that was in the applications' INSTALLED_APPS
+9. update INSTALLED_APPS with anything that was in arches application(s) and any app that was in the applications' INSTALLED_APPS
 ```
 INSTALLED_APPS = (
     "webpack_loader",
@@ -176,8 +176,8 @@ INSTALLED_APPS = (
     "arches_templating",
 )
 ```
-8. install the arches application package
+10. install the arches application package
 ```
 python manage.py packages -o load_package -a arches_for_science_package -dev  -y -db
 ```
-9. Run the project
+11. Run the project
