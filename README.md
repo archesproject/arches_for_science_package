@@ -1,9 +1,9 @@
 # arches_for_science_package
 
-### This is a version of the Arches for Science project that has been modified to work with the `installed packages` branch ( https://github.com/archesproject/arches/pull/9426 )
+### This is a version of the Arches for Science project that has been modified to work with the `arches_applications` branch ( https://github.com/archesproject/arches/pull/9426 )
 
 ##### Setup
-1.  ( if working locally ) run `pip install .` inside package to copy files into ENV or `pip install -e .` to create an egg link to a local package.
+1.  ( if working locally ) run `pip install .` inside arches application to copy files into ENV or `pip install -e .` to create an egg link to a local arches application.
 2.  create a project
 ```
 arches-project create $PROJECT_NAME
@@ -14,12 +14,16 @@ ARCHES_APPLICATIONS = (
     'arches_for_science_package',
 )
 ```
-5. add package to dependencies in package.json
+5. add arches_applications to dependencies in package.json
 ```
 "dependencies": {
  "arches": "archesproject/arches#stable/7.4.0",
  "arches_for_science_package": "archesproject/arches_for_science_package"
 }
+```
+6. Install arches_application dependencies
+```
+yarn install
 ```
 5. update project settings.py with anything from the arches application settings.py
 ```
@@ -145,7 +149,7 @@ urlpatterns = [
     path("reports/", include("arches_templating.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
-7. update INSTALLED_APPS with anything that was in arches application INSTALLED_APPS
+7. update INSTALLED_APPS with anything that was in arches application(s) and any app that was in the applications' INSTALLED_APPS
 ```
 INSTALLED_APPS = (
     "webpack_loader",
