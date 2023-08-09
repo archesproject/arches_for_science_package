@@ -1,5 +1,5 @@
 module.exports = {
-    INSTALLED_PACKAGE_NODE_MODULES_ALIASES: JSON.stringify({
+    ARCHES_APPLICATION_NODE_MODULES_ALIASES: JSON.stringify({
         "plotly.js-dist": "Path.resolve(__dirname, `${APP_ROOT}/media/node_modules/plotly.js-dist`)",
         "Plotly": "Path.resolve(__dirname, `${APP_ROOT}/media/node_modules/plotly.js-dist`)",
         "three": "Path.resolve(__dirname, `${APP_ROOT}/media/node_modules/three`)",
