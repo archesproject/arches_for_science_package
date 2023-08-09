@@ -8,15 +8,15 @@
 ```
 arches-project create $PROJECT_NAME
 ```
-3. add package to INSTALLED_APPS and INSTALLED_PACKAGES
+3. add package to INSTALLED_APPS and ARCHES_APPLICATIONS
 4. add package to dependencies in package.json
 ```
 "dependencies": {
  "arches": "archesproject/arches#stable/7.4.0",
-"arches_for_science_package": "archesproject/arches_for_science_package"
+ "arches_for_science_package": "archesproject/arches_for_science_package"
 }
 ```
-5. update project settings.py with anything from installed_package settings.py
+5. update project settings.py with anything from the arches application settings.py
 ```
 ELASTICSEARCH_HOSTS = [{"scheme": "http", "host": "localhost", "port": ELASTICSEARCH_HTTP_PORT}]
 TEMPLATES[0]["OPTIONS"]["context_processors"].append("arches_for_science_package.utils.context_processors.project_settings")
@@ -132,7 +132,7 @@ FORMATS = [
 ]
 
 ```
-6. update urls to include installed_package
+6. update urls to include arches application
 ```
 urlpatterns = [
     url(r'^', include('arches.urls')),
@@ -140,7 +140,7 @@ urlpatterns = [
     path("reports/", include("arches_templating.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
-7. update INSTALLED_APPS with anything that was in package
+7. update INSTALLED_APPS with anything that was in arches application INSTALLED_APPS
 ```
 INSTALLED_APPS = (
     "webpack_loader",
@@ -167,7 +167,7 @@ INSTALLED_APPS = (
     "arches_templating",
 )
 ```
-8. install the package
+8. install the arches application package
 ```
 python manage.py packages -o load_package -s /Users/cbyrd/Projects/ENV/lib/python3.8/site-packages/arches_for_science_package/pkg -dev  -y -db
 ```
