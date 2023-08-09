@@ -9,7 +9,12 @@
 arches-project create $PROJECT_NAME
 ```
 3. add package to INSTALLED_APPS and ARCHES_APPLICATIONS
-4. add package to dependencies in package.json
+```
+ARCHES_APPLICATIONS = (
+    'arches_for_science_package',
+)
+```
+5. add package to dependencies in package.json
 ```
 "dependencies": {
  "arches": "archesproject/arches#stable/7.4.0",
