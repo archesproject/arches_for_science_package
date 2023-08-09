@@ -3,7 +3,7 @@
 ### This is a version of the Arches for Science project that has been modified to work with the `installed packages` branch ( https://github.com/archesproject/arches/pull/9426 )
 
 ##### Setup
-1.  ( if working locally ) run `pip install .` inside package to copy files into ENV
+1.  ( if working locally ) run `pip install .` inside package to copy files into ENV or `pip install -e .` to create an egg link to a local package.
 2.  create a project
 ```
 arches-project create $PROJECT_NAME
