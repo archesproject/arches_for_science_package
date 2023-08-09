@@ -174,6 +174,6 @@ INSTALLED_APPS = (
 ```
 8. install the arches application package
 ```
-python manage.py packages -o load_package -s /Users/cbyrd/Projects/ENV/lib/python3.8/site-packages/arches_for_science_package/pkg -dev  -y -db
+python manage.py packages -o load_package -a arches_for_science_package -dev  -y -db
 ```
 9. Run the project
