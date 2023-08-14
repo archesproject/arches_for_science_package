@@ -1,9 +1,9 @@
 # arches_for_science_package
 
-### This is a version of the Arches for Science project that has been modified to work with the `installed packages` branch ( https://github.com/archesproject/arches/pull/9426 )
+### This is a version of the Arches for Science project that has been modified to work with the `arches_applications` branch ( https://github.com/archesproject/arches/pull/9426 )
 
 ##### Setup
-1.  ( if working locally ) run `pip install .` inside package to copy files into ENV or `pip install -e .` to create an egg link to a local package.
+1.  ( if working locally ) run `pip install .` inside arches application to copy files into ENV or `pip install -e .` to create an egg link to a local arches application.
 2.  create a project
 ```
 arches-project create $PROJECT_NAME
@@ -14,14 +14,18 @@ ARCHES_APPLICATIONS = (
     'arches_for_science_package',
 )
 ```
-5. add package to dependencies in package.json
+5. add arches_applications to dependencies in package.json
 ```
 "dependencies": {
  "arches": "archesproject/arches#stable/7.4.0",
  "arches_for_science_package": "archesproject/arches_for_science_package"
 }
 ```
-5. update project settings.py with anything from the arches application settings.py
+6. Install arches_application dependencies
+```
+yarn install
+```
+7. update project settings.py with anything from the arches application settings.py
 ```
 ELASTICSEARCH_HOSTS = [{"scheme": "http", "host": "localhost", "port": ELASTICSEARCH_HTTP_PORT}]
 TEMPLATES[0]["OPTIONS"]["context_processors"].append("arches_for_science_package.utils.context_processors.project_settings")
@@ -137,7 +141,7 @@ FORMATS = [
 ]
 
 ```
-6. update urls to include arches application
+8. update urls to include arches application
 ```
 urlpatterns = [
     url(r'^', include('arches.urls')),
@@ -145,7 +149,7 @@ urlpatterns = [
     path("reports/", include("arches_templating.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 ```
-7. update INSTALLED_APPS with anything that was in arches application INSTALLED_APPS
+9. update INSTALLED_APPS with anything that was in arches application(s) and any app that was in the applications' INSTALLED_APPS
 ```
 INSTALLED_APPS = (
     "webpack_loader",
@@ -172,8 +176,8 @@ INSTALLED_APPS = (
     "arches_templating",
 )
 ```
-8. install the arches application package
+10. install the arches application package
 ```
-python manage.py packages -o load_package -s /Users/cbyrd/Projects/ENV/lib/python3.8/site-packages/arches_for_science_package/pkg -dev  -y -db
+python manage.py packages -o load_package -a arches_for_science_package -dev  -y -db
 ```
-9. Run the project
+11. Run the project
